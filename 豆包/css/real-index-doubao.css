@@ -3,6 +3,483 @@
     height:100vh;
 }
 .left-container{
-    width: 10%;
+    width: 279.5px;
     background-color:#f3f4f6;
 }
+.right-container{
+    background-color: white;
+    width:auto;
+    height: 100vh;
+}
+.person{
+        display: block;
+        align-items: center;
+    }
+.logo1{
+    width:36px;
+    height:36px;
+    margin-left: 15.8px;
+    margin-top: 10.5px;
+}
+.left-top-svg{
+font-size:28px ;
+margin-left: 140px;
+cursor: pointer;
+border-radius: 8px;
+color: #c6c6c7;
+}
+.left-top-svg:hover{
+background-color: #e9eaec;
+}
+.person-name{
+    margin-left: 8px;
+    margin-top: 13.4px;
+    display: inline-block;
+  height: 25px;
+}
+.add-conversition{
+    align-items: center;
+    cursor: pointer;
+    border: 0.5px solid #c1d3f9;
+    padding: 6px 6px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    margin: 10px;
+    background-color: #e6ebf7;
+}
+#arrow1{
+color:#a9bffb;
+}
+#arrow3{
+margin-left: 135px;
+}
+#arrow4{
+    margin-left: 120px;
+}
+.blue1,.blue2{
+    font-size: 14px;
+    color: #1f67ff;
+}
+.style1{
+    font-size: 24px;
+}
+.AISEARCH,.help-write,.generate-photo,.read-sum{
+    align-items: center;
+    cursor: pointer;
+    padding: 6px 6px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    margin: 10px;
+    background-color:transparent;
+}
+.left-zhongjian span{
+transform: translateY(-4px);
+}
+.AISEARCH:hover{
+    background-color: #e9eaec;
+}
+.help-write:hover{
+    background-color: #e9eaec;
+}
+.generate-photo:hover{
+    background-color: #e9eaec;
+}
+.read-sum:hover{
+    background-color: #e9eaec;
+}
+.resent-conversition-name,.my-AI-name,.like{
+    align-items: center;
+    cursor: pointer;
+    padding: 6.5px 6.5px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin: 10px;
+}
+.resent-color1,.resent-color2{
+    color:#232424;
+}
+.resent-color1{
+    font-size: 20px;
+}
+.add-conversition:hover{
+background-color: #dde4f8;
+}
+.resent-conversition-name:hover{
+background-color: #e9eaec;
+}
+.like:hover{
+    background-color: #e9eaec;
+}
+.my-AI-name:hover{
+    background-color: #e9eaec;
+}
+.arrow1{
+   transform: translate(137px,-4px);
+}
+.arrow2{
+    transform: translate(122px,-4px);
+ }
+.blue2,.resent-color2{
+    display: inline-block;
+ }
+.left-bottom{
+   position: relative;
+   bottom: 10px;
+   height: 100%;
+}
+hr{
+    position: absolute;  
+    width: 17%;      
+    background-color: #000000;
+    left: 10px;
+    top:310px;
+
+}
+.about-doubao{
+    display: inline-block;
+    position: fixed;
+    bottom: 35px;
+    left: 40px;
+    border: .5px solid transparent;
+    padding-left: 20px;
+    padding-right: 90px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 12px;
+    
+}
+.about-doubao:hover{
+    cursor: pointer;
+    background-color: transparent;
+}
+.sheet-svg{
+    cursor: pointer;
+    font-size: 16px;
+}
+.sheett{
+    position: fixed; 
+    right: 270px; 
+    bottom: 80px;
+    display: flex;  
+}
+.sheet{
+   padding: 6px 8px; 
+   margin-bottom: 10px; 
+   border: 0.5px solid #dbdbdb;
+   margin-left: 8px;   
+   border-radius:12px;
+   font-size: 14px;
+}
+.sheet:hover .sheet-writing{
+    color:black;
+}
+.sheet:hover .sheet-svg{
+    color:#000000;
+}
+.sheetsvg{
+    cursor: pointer;
+    margin: 347px auto;
+    display: flex;
+    border: .5px solid transparent;
+    border-radius: 12px;
+    background-color: white;
+    align-content: center;
+    padding: 8px 8px;
+    width: 240px;
+    margin-bottom: 30px;
+    position: fixed;
+    bottom: 1px;
+    left: 10px;
+}
+.sheetsvg:hover{
+    background-color: #e9eaec;
+}
+.closesvg{
+   position:fixed;
+   bottom: 45px;
+   left: 240px;
+}
+.sheet:hover{
+    background-color: #f5f5f5;
+}
+.download-windows{
+    padding: 2px 2px;
+    margin: 10px;
+    display: flex;
+    border: .5px solid #cccccc;
+    align-items: center;
+    justify-content: center;
+}
+.download-windows-note{
+    margin-left: 4px;
+}
+.search-frame{
+    margin-top: 0px;
+    margin-left: 10px;
+    border: 0;
+    width: 600px;
+    height: 45px;
+    transform: translateY(-5px);
+    background-color: transparent;
+}
+.search{
+    position: fixed;
+    display: block;
+    border: .5px solid #e4e3e3;
+    width: 800px;
+    height: 50px;
+    border-radius: 16px;
+    margin-right: 180px;
+    margin-left: 170px;
+    margin-top: 720px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); 
+   bottom: 8px;
+   right: 70px;
+}
+input:focus{
+    outline: none;
+}
+input::placeholder{
+    color: #e1e2e1;
+    font-size: 14px;
+}
+.search svg{
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+.search-svg2-1{
+    margin-right: 5px;
+}
+.search-svg2-2{
+    margin-right: 0;
+}
+.send-button{
+    position: fixed;
+    bottom: 35px;
+    right: 230px;
+    color: #e1e2e1;
+    font-size: 30px;
+}
+.divider{
+    position: fixed;
+    right:330px ;
+    bottom: 38px;
+    width: .5px;
+    height: 30px;
+    background-color: #e1e2e1;
+}
+.search button{
+    margin-right: 60px;
+    border: 0;
+    background-color: transparent;
+}
+.hello1 strong{
+    font-size: 25px;
+}
+.hello{
+    position: fixed;
+}
+.hello1{
+    font-size: 40px;
+    position: relative;
+    left:220px ;
+    top:180px;
+}
+.search-svg1,.search-svg2-1,.search-svg2-2{
+    border-radius: 8px;
+}
+.search-svg2-2:hover{
+   background-color: #f0f0f0;
+}
+.search-svg2-1:hover{
+    background-color: #f0f0f0;
+ }
+ .search-svg1:hover{
+    background-color: #f0f0f0;
+ }
+.bell button{
+    background-color: transparent;
+    border: 0;
+    border-radius: 8px;
+    position: fixed;
+    top: 10px;
+    right: 60px;
+    padding: 3px;
+cursor: pointer;
+}
+.bell button:hover{
+    background-color: #f0f0f0;
+    
+}
+.bell svg{
+    font-size: 24px;
+}
+.bell img{
+    width: 30px;
+    border-radius: 15px;
+    position: fixed;
+    right: 12px;
+    top: 10px;
+    cursor: pointer;
+}
+.function-introduction{
+    color:#7f7f7f;
+    margin-left: 28px;
+    margin-top: 6px;
+}
+.grid-container {  
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr);
+    position: fixed;
+    gap: 10px; 
+    top: 300px;
+    left: 480px;
+  }  
+  .grid-item {  
+    font-size: 20px;  
+    padding: 10px;
+    border: .5px solid #dcdcdc;
+    border-radius: 16px;
+    width: 350px;
+    height: 50px;
+    cursor: pointer;
+  }
+  .grid-container svg{
+    font-size: 22px;
+  }
+  .function-name{
+    margin-left: 2px;
+  }
+  .grid-item:hover{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); 
+  }
+  .daxuesheng{
+    cursor: pointer;
+    border: .5px solid transparent;
+    border-radius: 16px;
+    width: 250px;
+    height: 46px;
+    position: fixed;
+    top: 230px;
+    right: 270px;
+    background-color: #f3f4f6;
+}
+  .daxuesheng:hover{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); 
+  }
+  .daxuesheng span{
+    display: inline-block;
+    margin-left: 8px;
+position: relative;
+bottom: 10px;
+  }
+  .daxuesheng-svg1{
+    margin-left: 8px;
+position: relative;
+bottom: 8px;
+  }
+  .daxuesheng-svg2{
+    font-size: 30px;
+    margin-left: 40px;
+    margin-top: 8px;
+  }
+  #tip1{
+    background-color: #41454c;
+    width:280px;
+    height: auto;
+    border-radius: 12px;
+    padding: 8px;
+    color: white;
+    position: fixed;
+    bottom: 79px;
+    left: 330px;
+  }
+  #tip2{
+    background-color: #41454c;
+    color: white;
+    width: 48px;
+    padding: 2px;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 79px;
+    right: 326px;
+}
+  #tip3{
+    background-color: #41454c;
+    color: white;
+    width: 25px;
+    padding: 2px;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 79px;
+    right: 287px;
+  }
+  #tip4{
+    background-color: #41454c;
+    color: white;
+    width: 50px;
+    padding: 2px;
+    border-radius: 4px;  
+    position: fixed;
+    top: 20px;
+    left: 265px;
+}
+  #x{
+    margin-left: 240px;
+    position: fixed;
+    bottom: 582px;
+    right: 256px;
+    cursor: pointer;
+  }
+  .hidden{
+    display: none;
+  }
+  .content1,.content2,.content3{
+    display: inline-block;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 7px;
+    border-radius: 16px;
+    width: 200px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+  .content1:hover{
+    background-color: white;
+  }
+  .content2:hover{
+    background-color: white;
+  }
+  .content3:hover{
+    background-color: white;
+  }
+  .AI1,.AI2,.AI3{
+    display: inline-block;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 7px;
+    border-radius: 16px;
+    width: 200px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+  .AI1:hover{
+    background-color: white;
+  }
+  .AI2:hover{
+    background-color: white;
+  }
+  .AI3:hover{
+    background-color: white;
+  }
+  .picture{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+  }
