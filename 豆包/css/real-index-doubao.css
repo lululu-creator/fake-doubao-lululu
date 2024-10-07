@@ -1,5 +1,103 @@
-.container{
+/*登录之前*/
+.login-container{
+    position: absolute;  
+        top: 30%;  
+        left: 40%; 
+}
+.login-container input{
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: .5px solid #769df1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); 
+padding-left: 10px;
+}
+.login-container button{
+border: 0.5px solid #7194ee;
+background-color: #e8f0fe;
+width: 100px;
+height: 40px;
+border-radius: 12px;
+display: inline-block;
+margin-left: 100px;
+margin-top: 1px;
+cursor: pointer;
+}
+.login-container button:hover{
+border: 0.5px solid #7194ee;
+background-color: #e8f0fe;
+width: 100px;
+height: 40px;
+border-radius: 12px;
+display: inline-block;
+margin-left: 100px;
+margin-top: 1px;
+}
+.register-container{
+    position: absolute;  
+        top: 30%;  
+        left: 40%; 
+        display: none;
+}
+.register-container.active, .container.active {  
+    display: block; 
+}
+.register-container input{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: .5px solid #769df1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); 
+padding-left: 10px;
+}
+.register-container button{
+border: 0.5px solid #7194ee;
+background-color: #e8f0fe;
+width: 100px;
+height: 40px;
+border-radius: 12px;
+display: inline-block;
+margin-left: 100px;
+margin-top: 1px;
+cursor: pointer;
+}
+.register-container button:hover{
+border: 0.5px solid #7194ee;
+background-color: #e8f0fe;
+width: 100px;
+height: 40px;
+border-radius: 12px;
+display: inline-block;
+margin-left: 100px;
+margin-top: 1px;
+}
+#register{
+    border: 0.5px solid #7194ee;
+    background-color: #e8f0fe;
+    padding: 3px;
+    color: #000000;
+    border-radius: 5px;
+}
+#login{
+    border: 0.5px solid #7194ee;
+    background-color: #e8f0fe;
+    padding: 3px;
+    color: #000000;
+    border-radius: 5px;
+}
+
+/*登录之后*/
+ 
+.container{
+    display: none;
     height:100vh;
 }
 .left-container{
@@ -257,12 +355,17 @@ input::placeholder{
 .search-svg2-2{
     margin-right: 0;
 }
-.send-button{
-    position: fixed;
-    bottom: 35px;
-    right: 230px;
-    color: #e1e2e1;
-    font-size: 30px;
+#real-send-button {  
+    position: fixed;  
+    bottom: 35px;  
+    right: 225px;  
+    font-size: 30px;  
+    color: #1f67ff;  
+}  
+  
+#real-send-button:disabled {  
+    color: #e1e2e1;  
+    cursor: wait;  
 }
 .divider{
     position: fixed;
@@ -431,8 +534,8 @@ bottom: 8px;
   #x{
     margin-left: 240px;
     position: fixed;
-    bottom: 582px;
-    right: 256px;
+    bottom: 580px;
+    right: 265px;
     cursor: pointer;
   }
   .hidden{
@@ -448,6 +551,7 @@ bottom: 8px;
     width: 200px;
     height: 25px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
   .content1:hover{
     background-color: white;
@@ -468,6 +572,7 @@ bottom: 8px;
     width: 200px;
     height: 25px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
   .AI1:hover{
     background-color: white;
@@ -483,3 +588,25 @@ bottom: 8px;
     height: 20px;
     border-radius: 10px;
   }
+  #hidden{
+    display: none;
+  }
+  .right-zhongjian{
+    display: block;
+  }
+ .chat-window{
+    background-color: #c9ec19;
+    width: 750px;
+    height: 660px;
+    margin-left: 200px;
+    margin-top: 20px;
+    border-radius: 16px;
+    display: none;
+    box-sizing: border-box;  
+        overflow-y: auto;
+ }
+ .disabled {  
+    opacity: 0.5;  
+    pointer-events: none;   
+} 
+

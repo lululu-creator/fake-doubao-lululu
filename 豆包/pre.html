@@ -1,0 +1,112 @@
+<!DOCTYPE html>    
+<html lang="en">    
+<head>    
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>问答界面</title>    
+    <style>    
+body {    
+    font-family: Arial, sans-serif;    
+}    
+  
+.inputForm { /* 类名未改 */    
+    background-color: #f4f4f4;    
+    width: 80%;    
+    margin: 0 auto;    
+    padding: 20px;    
+    border-radius: 10px;    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);    
+}    
+  
+.question, .answer {    
+    margin-bottom: 20px;    
+    padding: 15px;    
+    border-radius: 5px;    
+}    
+  
+.question {    
+    background-color: #e0f7fa;    
+}    
+  
+.answer {    
+    background-color: #fff9c4;    
+}    
+  
+.search {  /* 修改类名 */    
+    margin-top: 20px;    
+}    
+  
+.search input {  /* 修改类名 */    
+    width: calc(100% - 120px);    
+    padding: 10px;    
+    border: 1px solid #ccc;    
+    border-radius: 5px;    
+}    
+  
+.search button {  /* 修改类名 */    
+    padding: 10px 20px;    
+    border: none;    
+    border-radius: 5px;    
+    background-color: #4CAF50;    
+    color: white;    
+    cursor: pointer;    
+    margin-left: 10px;    
+}    
+  
+.search button:hover {  /* 修改类名 */    
+    background-color: #45a049;    
+}    </style>    
+</head>    
+<body>    
+    <div class="inputForm"> <!-- 修改类名 -->    
+        <div id="chatWindow">    
+            <!-- 问答内容将显示在这里 -->    
+        </div>    
+        <div class="search">  <!-- 修改类名 -->    
+            <input type="text" id="myInput" placeholder="输入您的问题...">    
+            <button id="real-send-button">提问</button>    
+        </div>    
+    </div>    
+    <script>  
+      document.addEventListener('DOMContentLoaded', () => {  
+          const qaSection = document.getElementById('qa-section');  
+          const questionInput = document.getElementById('questionInput');  
+          const askButton = document.getElementById('askButton');  
+    
+          askButton.addEventListener('click', () => {  
+              const questionText = questionInput.value.trim();  
+              if (questionText) {  
+                  // 创建一个新的问题元素  
+                  const questionElement = document.createElement('div');  
+                  questionElement.className = 'question';  
+                  questionElement.textContent = `Q: ${questionText}`;  
+    
+                  // 模拟一个回答（在实际应用中，这可能会通过某种方式获取）  
+                  const answerText = `A: 这是一个模拟的回答，用于展示问答界面。`;  
+                  const answerElement = document.createElement('div');  
+                  answerElement.className = 'answer';  
+                  answerElement.textContent = `A: ${answerText}`;  
+    
+                  // 将问题和回答添加到问答区域  
+                  qaSection.appendChild(questionElement);  
+                  qaSection.appendChild(answerElement);  
+    
+                  // 清空输入框  
+                  questionInput.value = '';  
+    
+                  // 滚动到问答区域的底部（如果需要）  
+                  qaSection.scrollTop = qaSection.scrollHeight;  
+              }  
+          });  
+    
+          // 可选：按下回车键时提问  
+          questionInput.addEventListener('keydown', (event) => {  
+              if (event.key === 'Enter' && !(event.ctrlKey || event.shiftKey || event.altKey || event.metaKey)) {  
+                  event.preventDefault();  
+                  askButton.click();  
+              }  
+          });  
+      });  
+    </script>    
+</body>    
+</html>

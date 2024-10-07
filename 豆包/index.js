@@ -1,3 +1,37 @@
+function login() {  
+    const username = document.getElementById('username').value;  
+    const password = document.getElementById('password').value;  
+    const correctUsername = localStorage.getItem('Rusername');  
+    const correctPassword = localStorage.getItem('Rpassword');
+    if (username === correctUsername && password === correctPassword) {  
+        var container = document.querySelector('.container');  
+              container.style.display = 'flex'; 
+        var loginC=document.querySelector('.login-container');
+              loginC.style.display='none';
+    } else {  
+        alert('用户名或密码错误');  
+    }  
+    
+    
+}  
+var loginC=document.querySelector('.login-container');
+var registerC=document.getElementById('hidden');
+    function register() {  
+        const Rusername = document.getElementById('R-username').value;  
+        const Rpassword = document.getElementById('R-password').value;    
+        const captcha ='20061004';
+        const Rcaptcha = document.getElementById('R-captcha').value;  
+    if(Rcaptcha===captcha){
+        localStorage.setItem('Rusername', Rusername);  
+        localStorage.setItem('Rpassword', Rpassword); 
+        alert('注册成功！请登录。');    
+        loginC.style.display='block';
+        registerC.style.display='none';
+    }
+    else{
+        alert('验证码错误');
+    }
+    }
     document.addEventListener('DOMContentLoaded', function() {  
         var hover1 = document.getElementById('hover1');  
         var tip1 = document.getElementById('tip1');  
@@ -46,12 +80,19 @@
             x.classList.remove('hidden');  
         });  
   
+        x.addEventListener('mouseleave', function(event) {  
+            x.classList.add('hidden');  
+        });
+        x.addEventListener('mouseenter', function(event) {  
+            x.classList.remove('hidden');  
+        });  
+  
         daxuesheng.addEventListener('mouseleave', function(event) {  
             x.classList.add('hidden');  
         });
         var arrow3 = document.getElementById('arrow3');  
         var arrow1 = document.getElementById('arrow1');  
-        var resent = document.getElementById('resent-conversition');
+        var resent = document.getElementById('resent-conversition-name');
         var content=document.getElementById('content');
         resent.addEventListener('click', function(event) {  
             if (!arrow1.classList.contains('hidden')) {  
@@ -68,7 +109,7 @@
         });  
         var arrow4 = document.getElementById('arrow4');  
         var arrow2 = document.getElementById('arrow2');  
-        var myAI = document.getElementById('myAI');
+        var myAI = document.getElementById('my-AI-name');
         var AI=document.getElementById('AI');
         
         myAI.addEventListener('click', function(event) {  
@@ -83,9 +124,60 @@
                 AI.classList.add('hidden');
             }   
         });  
+    x.addEventListener('click', function(event) {
+    daxuesheng.style.display = 'none';
+    x.style.display = 'none';
+
+    });
+      var xx = document.getElementById('xx');
+      var sheetsvg=document.getElementById('sheetsvg');
+      xx.addEventListener('click', function(event) {
+        sheetsvg.style.display = 'none';
+    
+      });
+      var myInput = document.getElementById('myInput');  
+      var realSendButton = document.getElementById('real-send-button');  
   
-        
-    });  
+    myInput.addEventListener('input', function() {  
+    if (myInput.value.trim() !== '') {  
+        realSendButton.disabled = false;  
+    } else {  
+        realSendButton.disabled = true;  
+    }  
+    });
+     var register=document.getElementById('register');
+     var loginC=document.querySelector('.login-container');
+     var registerC=document.querySelector('.register-container');
+     register.addEventListener('click', function(event) {
+        loginC.style.display = 'none';
+        registerC.style.display='block';
+      });
+      var login=document.getElementById('login');
+      login.addEventListener('click', function(event) {
+         registerC.style.display = 'none';
+         loginC.style.display='block';
+       });
+       //搜索
+       var chatWindow = document.getElementById('chatWindow');    
+       var needHidden=document.getElementsByClassName('right-zhongjian');
+       realSendButton.addEventListener('click', function(event) {  
+        for (var i = 0; i < needHidden.length; i++) {  
+            needHidden[i].style.display = 'none';  
+        }  
+            chatWindow.style.display = 'block';  
+        });
+    var addConversitions = document.getElementsByClassName('add-conversition');  
+    for (var j = 0; j < addConversitions.length; j++) {  
+        addConversitions[j].addEventListener('click', function(event) {  
+            for (var i = 0; i < needHidden.length; i++) {  
+                needHidden[i].style.display = 'block';  
+            }  
+        });  
+    }
+
+});
+
+    
 
 
 
