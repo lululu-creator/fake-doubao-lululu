@@ -227,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
       document.getElementById('real-send-button').addEventListener('click', function() {  
-        const input = document.getElementById('myInput');  
         const messages = document.getElementById('messages');  
         const userMessage = document.createElement('div');  
         const contentContainer = document.getElementById('content-container');  
@@ -252,13 +251,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }  
         userMessage.classList.add('message', 'user-message');  
-        userMessage.textContent = input.value;  
+        userMessage.textContent = myInput.value;  
         messages.appendChild(userMessage);  
         const botMessage = document.createElement('div');  
         botMessage.classList.add('message', 'bot-message');  
-        botMessage.textContent = 'AI回复: ' + '您输入了: ' + input.value ;  
+            async function callByteKouziAPI(inputText) {
+                try {
+                    const apiUrl = 'https://api.coze.cn/v3/chat?conversation_id=7423298502882574336';
+                    const headers = {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer pat_XktW59myey3jqLlo2fJwxJbDyL9er78MWiSdtnsAug7ULeREEMpZco22uQldr4Bv'
+                    };
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify({
+                            input: inputText,
+                            bot_id: '7423298502882574336',
+                            user_id: '123123123',
+                            stream: true,
+                        })
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    return data.response || '无法确定回复内容';
+                } catch (error) {
+                    return `Error: ${error.message}`;
+                }
+            }
+            const responseText =  callByteKouziAPI(myInput.value);
+            console.log(responseText);
+        botMessage.textContent = 'AI回复: '  + responseText ;  
         messages.appendChild(botMessage);  
-        input.value = '';  
+        myInput.value = '';  
         this.disabled = true;  
         // 滚动到底部  
         messages.scrollTop = messages.scrollHeight;  
@@ -283,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });  
     }  
 
-    //API
+
 });
 
     
