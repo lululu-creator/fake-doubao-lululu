@@ -255,40 +255,203 @@ document.addEventListener('DOMContentLoaded', function() {
         messages.appendChild(userMessage);  
         const botMessage = document.createElement('div');  
         botMessage.classList.add('message', 'bot-message');  
-            async function callByteKouziAPI(inputText) {
-                try {
-                    const apiUrl = 'https://api.coze.cn/v3/chat?conversation_id=7423298502882574336';
-                    const headers = {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer pat_XktW59myey3jqLlo2fJwxJbDyL9er78MWiSdtnsAug7ULeREEMpZco22uQldr4Bv'
-                    };
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: headers,
-                        body: JSON.stringify({
-                            input: inputText,
-                            bot_id: '7423298502882574336',
-                            user_id: '123123123',
-                            stream: true,
-                        })
-                    });
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    const data = await response.json();
-                    return data.response || '无法确定回复内容';
-                } catch (error) {
-                    return `Error: ${error.message}`;
+
+
+
+        async function callByteKouziAPIConversation() {
+            try {
+                const apiUrl = 'https://api.coze.cn/v1/conversation/create';
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer pat_SgWmF7fueamA6WtVDmwpiDhIOHQpTruKzUd8hi5gis45Mwz8Dm5CU5vJEoDNzxX8'
+                };
+                const requestBody = {};
+                const responseConversation = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(requestBody)
+                });
+                if (!responseConversation.ok) {
+                    throw new Error(`HTTP error! status: ${responseConversation.status}`);
                 }
+                const Data = await responseConversation.json();
+                return Data || '无法确定回复内容';
+            } catch (error) {
+                return `Error: ${error.message}`;
             }
-            const responseText =  callByteKouziAPI(myInput.value);
-            console.log(responseText);
-        botMessage.textContent = 'AI回复: '  + responseText ;  
-        messages.appendChild(botMessage);  
-        myInput.value = '';  
-        this.disabled = true;  
-        // 滚动到底部  
-        messages.scrollTop = messages.scrollHeight;  
+        }
+        
+        async function getConversationID() {
+            const response = await callByteKouziAPIConversation();
+            console.log(response.data.id);
+            return (response.data.id) || '无法确定回复内容';
+        }
+        async function getChatID() {
+            const myInput = document.getElementById('myInput');
+            const conversationID = await getConversationID();
+            try {
+                const apiUrl = 'https://api.coze.cn/v3/chat?conversation_id=' + conversationID;
+                console.log(conversationID);
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer pat_SgWmF7fueamA6WtVDmwpiDhIOHQpTruKzUd8hi5gis45Mwz8Dm5CU5vJEoDNzxX8'
+                };
+                const requestBody = {
+                    bot_id: '7424013346884190249',
+                    user_id: '123123123',
+                    stream: false,
+                    auto_save_history: true,
+                    additional_messages: [
+                        {
+                            role: 'user',
+                            content: myInput.value,
+                            content_type: 'text',
+                        }
+                    ]
+                };
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(requestBody)
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const Data = await response.json();
+                console.log(Data.data.id);
+                return Data || '无法确定回复内容';
+            } catch (error) {
+                return `Error: ${error.message}`;
+            }
+        }
+        
+        
+        async function GetChatID() {
+            const response = await getChatID();
+            console.log(response.data.id);
+            return (response.data.id) || '无法确定回复内容';
+        }
+        const conversationID = getConversationID();
+        const chatID =  GetChatID();
+
+
+ 
+
+
+
+
+
+        async function getStatus() {
+            try {
+                const apiUrl = `https://api.coze.cn/v3/chat/retrieve?chat_id=${chatID}&conversation_id=${conversationID}`;
+
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer pat_SgWmF7fueamA6WtVDmwpiDhIOHQpTruKzUd8hi5gis45Mwz8Dm5CU5vJEoDNzxX8'
+                };
+                const requestBody = {};
+                const responseStatus = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(requestBody)
+                });
+                if (!responseStatus.ok) {
+                    throw new Error(`HTTP error! status: ${responseStatus.status}`);
+                }
+                const DATA = await responseStatus.json();
+                const status = DATA.data.status;
+                let intervalId;
+                if (status === 'in_progress') {
+                    intervalId = setInterval(async () => {
+                        const newResponse = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: headers,
+                            body: JSON.stringify(requestBody)
+                        });
+                        if (!newResponse.ok) {
+                            throw new Error(`HTTP error! status: ${newResponse.status}`);
+                        }
+                        const newData = await newResponse.json();
+                        const newStatus = newData.status;
+                        console.log("in_progress");
+                        if (newStatus === 'completed') {
+                            clearInterval(intervalId);
+                            console.log("completed");
+                            return newData.response.id || '无法确定回复内容';
+                        }
+                    }, 1000);
+        
+                } else {
+                    return DATA.response.id || '无法确定回复内容';
+                }
+            } catch (error) {
+                return `Error: ${error.message}`;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        async function getMessage() {
+            const conversationID = await getConversationID();
+            const chatID = await GetChatID();
+            console.log(chatID);
+            try {
+                const apiUrl = `https://api.coze.cn/v3/chat/message/list?chat_id=${chatID}&conversation_id=${conversationID}`;
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer pat_SgWmF7fueamA6WtVDmwpiDhIOHQpTruKzUd8hi5gis45Mwz8Dm5CU5vJEoDNzxX8'
+                };
+                const response = await fetch(apiUrl, {
+                    method: 'GET',
+                    headers: headers
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                return `Error: ${error.message}`;
+            }
+        }
+        async function getMessageContent() {  
+            const response = await getMessage();  
+            return response.content || '无法确定回复内容';  
+        }
+
+
+
+
+        const Content=getMessageContent();
+
+
+
+
+        botMessage.textContent = 'AI 回复: ' + Content;
+        messages.appendChild(botMessage);
+        myInput.value = '';
+        this.disabled = true;
+  
+   
+
+
+
+
+         messages.scrollTop = messages.scrollHeight;  
+
+
+
+
+
 
     });
     var addConversitions = document.getElementsByClassName('add-conversition');  
